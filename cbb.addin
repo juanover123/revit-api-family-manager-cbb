@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Application">
+		<Name>JuanoverTestbox1</Name>
+		<Assembly>cbb.dll</Assembly>
+		<FullClassName>cbb.Main</FullClassName>
+		<ClientId>da65898d-4992-4871-ad66-84aeb19baa42</ClientId>
+		<VendorId>com.juanover.bimwave</VendorId>
+		<Publisher>Arq. Juan Garcia</Publisher>
+		<VendorDescription>Arq. Juan Garcia, https://www.linkedin.com/in/arqjuangarcia/</VendorDescription>
+	</AddIn>
+	<AddIn Type="Command">
+		<Text>Tag Wall Layers</Text>
+		<Description>Tags every layer of a wall</Description>
+		<Assembly>cbb.core.dll</Assembly>
+		<FullClassName>cbb.core.TagWallLayersCommand</FullClassName>
+		<ClientId>d0629e1d-f3b0-4449-8ca1-6cb3eccb7362</ClientId>
+		<VendorId>com.juanover.bimwave</VendorId>
+		<VendorDescription>Arq. Juan Garcia, https://www.linkedin.com/in/arqjuangarcia/</VendorDescription>
+	</AddIn>
+</RevitAddIns>

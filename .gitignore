@@ -1,0 +1,11 @@
+# Visual Studio/IDE Files
+.vs/
+*.vsidx
+
+# Windows/macOS/Linux system files
+.DS_Store
+Thumbs.db
+
+# Binaries/Build/Output folders
+[Bb]in/
+[Oo]bj/

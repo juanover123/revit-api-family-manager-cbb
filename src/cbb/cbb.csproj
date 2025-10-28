@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+		<Nullable>enable</Nullable>
+		<Platforms>AnyCPU;x64</Platforms>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="dat\**" />
+	  <Compile Remove="doc\**" />
+	  <EmbeddedResource Remove="dat\**" />
+	  <EmbeddedResource Remove="doc\**" />
+	  <None Remove="dat\**" />
+	  <None Remove="doc\**" />
+	  <Page Remove="dat\**" />
+	  <Page Remove="doc\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="RevitAPI">
+			<HintPath>..\..\ext\RevitAPI.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="RevitAPIUI">
+			<HintPath>..\..\ext\RevitAPIUI.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
+		<PackageReference Include="System.Drawing.Common" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\cbb.core\cbb.core.csproj" />
+	  <ProjectReference Include="..\cbb.res\cbb.res.csproj" />
+	  <ProjectReference Include="..\cbb.ui\cbb.ui.csproj" />
+	</ItemGroup>
+
+</Project>
