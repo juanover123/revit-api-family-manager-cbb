@@ -64,9 +64,25 @@ namespace cbb.core
                     break;
             }
 
+            // Collector for data provided in window.
+            var userInfo = new TagWallLayersCommandData();
+
             if (!canCreateTextNoteInView)
             {
                 Message.Display("Cannot create text note in the current active view.", WindowType.Error);
+                return Result.Cancelled;
+            }
+
+            // Get user provided information from window and show dialog.
+            var window = new TagWallLayersForm(uidoc);
+            bool? result = window.ShowDialog();
+
+            if (result == true)
+            {
+                userInfo = window.GetInformation();
+            }
+            else
+            {
                 return Result.Cancelled;
             }
 
@@ -99,7 +115,15 @@ namespace cbb.core
             foreach (var layer in layers)
             {
                 var material = doc.GetElement(layer.MaterialId) as Material;
-                msg.AppendLine($"Layer Function: {layer.Function.ToString()}, Material: {material.Name}, Thickness: {UnitUtils.ConvertFromInternalUnits(layer.Width, UnitTypeId.Millimeters):F0} mm");
+                
+                if (userInfo.Function)
+                    msg.AppendLine(layer.Function.ToString() + "\n");
+
+                if (userInfo.Name)
+                    msg.AppendLine(" " + material.Name);
+
+                if (userInfo.Thickness)
+                    msg.AppendLine(" " + layer.Width.ToString());
             }
 
             // Create text note options.
@@ -107,7 +131,7 @@ namespace cbb.core
             {
                 HorizontalAlignment = HorizontalTextAlignment.Left,
                 VerticalAlignment = VerticalTextAlignment.Top,
-                TypeId = doc.GetDefaultElementTypeId(ElementTypeGroup.TextNoteType)
+                TypeId = userInfo.TextTypeId,
             };
 
             // Open Revit document transaction to create new Text Note element.

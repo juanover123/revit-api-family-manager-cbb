@@ -1,0 +1,71 @@
+﻿<Window x:Class="cbb.core.TagWallLayersForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:cbb.core"
+        mc:Ignorable="d"
+        
+        Title="Tag Options"
+        
+        WindowStartupLocation="CenterScreen"
+        SizeToContent="Height"
+        Width="469"
+        MinWidth="300" Height="236" MinHeight="300">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Tag Properties" 
+                  Grid.Row="0">
+
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Margin="5">
+                    <CheckBox x:Name="functionCheckBox" Content="Function" Margin="0,0,0,5" IsChecked="True"/>
+                    <CheckBox x:Name="nameCheckBox" Content="Name" Margin="0,0,0,5" IsChecked="True"/>
+                    <CheckBox x:Name="thicknessCheckBox" Content="Thickness" IsChecked="True" />
+                </StackPanel>
+
+                <Label Content="Text Note Type:" 
+                       Grid.Row="2" 
+                       Margin="5,0,5,2"/>
+
+                <ComboBox x:Name="textNoteElementTypeComboBox" Grid.Row="3" 
+                          Margin="5,0,5,5" 
+                          MinHeight="22" SelectionChanged="textNoteElementTypeComboBox_SelectionChanged"/>
+            </Grid>
+        </GroupBox>
+
+        <Grid Grid.Row="1" Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="OkButton" 
+                    Content="Ok" 
+                    IsDefault="True" 
+                    Click="OkButton_Click" 
+                    Height="24" 
+                    Margin="0,0,5,0"
+                    Grid.Column="0"/>
+            <Button x:Name="CancelButton" 
+                    Content="Cancel" 
+                    IsCancel="True" 
+                    Height="24" 
+                    Margin="5,0,0,0"
+                    Grid.Column="1" Click="CancelButton_Click"/>
+        </Grid>
+
+    </Grid>
+</Window>
