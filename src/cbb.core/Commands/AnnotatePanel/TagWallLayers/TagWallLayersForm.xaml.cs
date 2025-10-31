@@ -18,11 +18,6 @@
         /// </summary>
         private UIDocument? uidoc = null;
 
-        /// <summary>
-        /// The private text type identifier <see cref="ElementId"/>."/>
-        /// </summary>
-        private ElementId? textTypeId = null;
-
         #endregion
 
         #region constructor
@@ -77,16 +72,6 @@
             textNoteTypeListPopulate();
         }
 
-        /// <summary>
-        /// Handles the SelectionChanged event of the textNoteElementTypeComboBox control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">Instance containing the event data.</param>
-        private void textNoteElementTypeComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            textTypeId = ((KeyValuePair<string, ElementId>)textNoteElementTypeComboBox.SelectedItem).Value;
-        }
-
         #endregion
 
         #region public methods
@@ -103,7 +88,7 @@
                 Function = functionCheckBox.IsChecked ?? false,
                 Name = nameCheckBox.IsChecked ?? false,
                 Thickness = thicknessCheckBox.IsChecked ?? false,
-                TextTypeId = textTypeId
+                TextTypeId = (ElementId)textNoteElementTypeComboBox.SelectedValue
             };
 
             return information;

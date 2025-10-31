@@ -11,7 +11,10 @@
         WindowStartupLocation="CenterScreen"
         SizeToContent="Height"
         Width="469"
-        MinWidth="300" Height="236" MinHeight="300">
+        MinWidth="300" 
+        Height="236" 
+        MinHeight="300"
+        Loaded="TagWallLayersForm_Loaded">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -42,7 +45,7 @@
 
                 <ComboBox x:Name="textNoteElementTypeComboBox" Grid.Row="3" 
                           Margin="5,0,5,5" 
-                          MinHeight="22" SelectionChanged="textNoteElementTypeComboBox_SelectionChanged"/>
+                          MinHeight="22"/>
             </Grid>
         </GroupBox>
 

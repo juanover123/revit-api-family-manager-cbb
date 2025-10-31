@@ -117,13 +117,13 @@ namespace cbb.core
                 var material = doc.GetElement(layer.MaterialId) as Material;
                 
                 if (userInfo.Function)
-                    msg.AppendLine(layer.Function.ToString() + "\n");
+                    msg.Append(layer.Function.ToString() + "\n");
 
                 if (userInfo.Name)
-                    msg.AppendLine(" " + material.Name);
+                    msg.Append(" " + material.Name);
 
                 if (userInfo.Thickness)
-                    msg.AppendLine(" " + layer.Width.ToString());
+                    msg.Append(" " + layer.Width.ToString());
             }
 
             // Create text note options.
