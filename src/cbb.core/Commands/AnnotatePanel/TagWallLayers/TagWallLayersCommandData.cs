@@ -41,6 +41,22 @@
         /// </value>
         public ElementId? TextTypeId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the type of the unit to convert to.
+        /// </summary>
+        /// <value>
+        /// The type of the unit.
+        /// </value>
+        public LengthUnitType unitType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the decimal places precision.
+        /// </summary>
+        /// <value>
+        /// The decimal places precision.
+        /// </value>
+        public int DecimalPlaces { get; set; }
+
         #endregion
 
         #region constructor

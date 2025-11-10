@@ -88,7 +88,7 @@ namespace cbb.core
 
             // Ask user to select one basic wall.
             var selectionReference = uidoc.Selection.PickObject(Autodesk.Revit.UI.Selection.ObjectType.Element,
-                new SelectionFilterByCategory("Walls"),
+                new SelectionFilterByCategory(BuiltInCategory.OST_Walls),
                 "Select one basic wall to tag its layers.");
             var selectionElement = doc.GetElement(selectionReference);
 
@@ -103,9 +103,6 @@ namespace cbb.core
                 return Result.Cancelled;
             }
 
-            // Ask user to pick location point for the Text Note element.
-            var pt = uidoc.Selection.PickPoint("Pick point to place Wall Layers Yext Note.");
-
             // Access list of wall layers.
             var layers = wall.WallType.GetCompoundStructure().GetLayers();
 
@@ -114,16 +111,43 @@ namespace cbb.core
 
             foreach (var layer in layers)
             {
+                if (layer.Width == 0)
+                    continue;
+
+                var line = new StringBuilder();
+
                 var material = doc.GetElement(layer.MaterialId) as Material;
-                
+                string materialName = (material == null) ? "<N/A>" : material.Name;
+
                 if (userInfo.Function)
-                    msg.Append(layer.Function.ToString() + "\n");
+                {
+                    line.Append($"{layer.Function.ToString()}");
+                }
 
                 if (userInfo.Name)
-                    msg.Append(" " + material.Name);
+                {
+                    if (line.Length > 0) line.Append(", ");
+                    line.Append($"{materialName}");
+                }
 
                 if (userInfo.Thickness)
-                    msg.Append(" " + layer.Width.ToString());
+                {
+                    double convertedThickness = LengthUnitsConverter.ConvertFromInternal(layer.Width,
+                                  userInfo.unitType,
+                                  userInfo.DecimalPlaces
+                               );
+
+                    string formatString = "F" + userInfo.DecimalPlaces.ToString();
+
+                    string unitAbbreviation = LengthUnitsConverter.GetUnitAbbreviation(userInfo.unitType);
+
+                    string formattedThickness = $"{convertedThickness.ToString(formatString)} {unitAbbreviation}";
+
+                    if (line.Length > 0) line.Append(", ");
+                    line.Append($"{formattedThickness}");
+                }
+
+                msg.AppendLine(line.ToString());
             }
 
             // Create text note options.
@@ -139,6 +163,24 @@ namespace cbb.core
             {
                 transaction.Start("Tag Wall Layers Command");
 
+                var pt = new XYZ();
+
+                // Construct sketch plane for user to pick point if we are in elevation or section views.
+                if (activeView.ViewType == ViewType.Elevation || activeView.ViewType == ViewType.Section)
+                {
+                    var plane = Plane.CreateByNormalAndOrigin(activeView.ViewDirection, activeView.Origin);
+                    var sketchPlane = SketchPlane.Create(doc, plane);
+                    activeView.SketchPlane = sketchPlane;
+
+                    // Ask user to pick point in elevation or section view.
+                    pt = uidoc.Selection.PickPoint("Pick point to place wall layers info text note.");
+                }
+                else
+                {
+                    // Ask user to pick point in plan view.
+                    pt = uidoc.Selection.PickPoint("Pick point to place wall layers info text note.");
+                }
+
                 // Create text note with wall layers info at user specified point.
                 var textNote = TextNote.Create(doc, activeView.Id, pt, msg.ToString(), textNoteOptions);
                     
@@ -146,7 +188,7 @@ namespace cbb.core
             }
 
             return Result.Succeeded;
-        }
+        }   
 
         /// <summary>
         /// Gets the full namespace path to this command.

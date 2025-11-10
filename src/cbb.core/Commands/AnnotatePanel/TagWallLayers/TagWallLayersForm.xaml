@@ -7,25 +7,24 @@
         mc:Ignorable="d"
         
         Title="Tag Options"
-        
         WindowStartupLocation="CenterScreen"
+        
         SizeToContent="Height"
-        Width="469"
+        Width="430"
         MinWidth="300" 
-        Height="236" 
         MinHeight="300"
-        Loaded="TagWallLayersForm_Loaded">
+        Loaded="TagWallLayersForm_Loaded"
+        ResizeMode="NoResize">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <GroupBox Header="Tag Properties" 
-                  Grid.Row="0">
-
-            <Grid Margin="5">
+        <GroupBox x:Name="tagPropertiesGroupbox" Header="Tag Properties" Grid.Row="0">
+            <Grid Margin="5" MinHeight="144">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
@@ -49,7 +48,40 @@
             </Grid>
         </GroupBox>
 
-        <Grid Grid.Row="1" Margin="0,10,0,0">
+        <GroupBox x:Name="unitsGroupbox" Header="Units" 
+                  Grid.Row="1" 
+                  Margin="0,10,0,0">
+
+            <Grid Margin="5" MinHeight="72">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+
+                </Grid.RowDefinitions>
+
+                <Label Content="Unit Type" 
+                Grid.Row="0" 
+                Margin="5,0,5,2"/>
+
+                <ComboBox x:Name="unitsTypeComboBox" Grid.Row="1" 
+                Margin="5,0,5,5" 
+                MinHeight="22"/>
+
+                <Label Content="Decimal Places" 
+                Grid.Row="2" 
+                Margin="5,0,5,2"/>
+
+                <ComboBox x:Name="unitsDecimalPlacesComboBox" Grid.Row="3" 
+                Margin="5,0,5,5" 
+                MinHeight="22"/>
+
+            </Grid>
+
+        </GroupBox>
+
+        <Grid Grid.Row="2" Margin="0,10,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />

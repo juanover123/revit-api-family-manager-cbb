@@ -3,6 +3,7 @@
     using Autodesk.Revit.UI;
     using Autodesk.Revit.DB;
 
+    using System;
     using System.Windows;
     using System.Collections.Generic;
 
@@ -69,7 +70,13 @@
         /// <param name="e">Instance containing the event data.</param>
         private void TagWallLayersForm_Loaded(object sender, RoutedEventArgs e)
         {
+            // Populate items with data on form load event.
             textNoteTypeListPopulate();
+
+            unitsTypeListPopulate();
+
+            unitsDecimalPlacesListPopulate();
+
         }
 
         #endregion
@@ -88,7 +95,9 @@
                 Function = functionCheckBox.IsChecked ?? false,
                 Name = nameCheckBox.IsChecked ?? false,
                 Thickness = thicknessCheckBox.IsChecked ?? false,
-                TextTypeId = (ElementId)textNoteElementTypeComboBox.SelectedValue
+                TextTypeId = (ElementId)textNoteElementTypeComboBox.SelectedValue,
+                unitType = (LengthUnitType)unitsTypeComboBox.SelectedValue,
+                DecimalPlaces = (int)unitsDecimalPlacesComboBox.SelectedValue,
             };
 
             return information;
@@ -122,6 +131,41 @@
             textNoteElementTypeComboBox.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Populates the unit types list.
+        /// </summary>
+        private void unitsTypeListPopulate()
+        {
+            var list = new List<KeyValuePair<string, LengthUnitType>>();
+
+            // Populate list from enum types.
+            foreach (var item in System.Enum.GetValues(typeof(LengthUnitType)))
+            {
+                list.Add(new KeyValuePair<string, LengthUnitType>(item.ToString(), (LengthUnitType)item));
+            }
+
+            unitsTypeComboBox.ItemsSource = list;
+            unitsTypeComboBox.DisplayMemberPath = "Key";
+            unitsTypeComboBox.SelectedValuePath = "Value";
+            unitsTypeComboBox.SelectedValue = LengthUnitType.Centimeter;
+
+        }
+
+        /// <summary>
+        /// Pupulates the units decimal places list.
+        /// </summary>
+        private void unitsDecimalPlacesListPopulate()
+        {
+            // List of precision values.
+            var values = new List<int>() { 0, 1, 2, 3 };
+
+            // Define list as Items Source for ui control.
+            unitsDecimalPlacesComboBox.ItemsSource = values;
+
+            unitsDecimalPlacesComboBox.SelectedValue = 2;
+        }
+
         #endregion
+
     }
 }

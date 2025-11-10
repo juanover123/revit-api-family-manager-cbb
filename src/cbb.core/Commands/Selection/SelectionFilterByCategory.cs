@@ -12,7 +12,7 @@
         #region private members
 
         // Private variable to hold category name.
-        private string mCategory = "";
+        private long mCategoryId;
 
         #endregion
 
@@ -22,10 +22,10 @@
         /// default constructor.
         /// Initializes a new instance of the <see cref="SelectionFilterByCategory"/> class.
         /// </summary>
-        /// <param name="category">The category of element, such as Walls, Floors,...</param>
-        public SelectionFilterByCategory(string category)
+        /// <param name="category">The BuiltInCategory of element.</param>
+        public SelectionFilterByCategory(BuiltInCategory category)
         {
-            mCategory = category;
+            mCategoryId = (long)category;
         }
 
         #endregion
@@ -40,7 +40,7 @@
         /// langword="false"/>.</returns>
         public bool AllowElement(Element elem)
         {
-            if (elem.Category != null && elem.Category.Name.Equals(mCategory))
+            if (elem.Category != null && elem.Category.Id.Value == mCategoryId)
             {
                 return true;
             }
