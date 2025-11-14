@@ -8,14 +8,26 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\Icons\wallTag_icon_16x16.png" />
+    <None Remove="Images\Icons\familyManagerHide_icon_32x32.png" />
+    <None Remove="Images\Icons\familyManagerHide_icon_96x96.png" />
+    <None Remove="Images\Icons\familyManagerHide_tooltip_320x320.png" />
+    <None Remove="Images\Icons\familyManagerShow_icon_32x32.png" />
+    <None Remove="Images\Icons\familyManagerShow_icon_96x96.png" />
+    <None Remove="Images\Icons\familyManagerShow_tooltip_320x320.png" />
     <None Remove="Images\Icons\wallTag_icon_32x32.png" />
+    <None Remove="Images\Icons\wallTag_icon_96x96.png" />
     <None Remove="Images\Icons\wallTag_tooltip_320x320.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Images\Icons\wallTag_icon_16x16.png" />
+    <EmbeddedResource Include="Images\Icons\familyManagerHide_icon_32x32.png" />
+    <EmbeddedResource Include="Images\Icons\familyManagerHide_icon_96x96.png" />
+    <EmbeddedResource Include="Images\Icons\familyManagerHide_tooltip_320x320.png" />
+    <EmbeddedResource Include="Images\Icons\familyManagerShow_icon_32x32.png" />
+    <EmbeddedResource Include="Images\Icons\familyManagerShow_icon_96x96.png" />
+    <EmbeddedResource Include="Images\Icons\familyManagerShow_tooltip_320x320.png" />
     <EmbeddedResource Include="Images\Icons\wallTag_icon_32x32.png" />
+    <EmbeddedResource Include="Images\Icons\wallTag_icon_96x96.png" />
     <EmbeddedResource Include="Images\Icons\wallTag_tooltip_320x320.png" />
   </ItemGroup>
 

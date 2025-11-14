@@ -9,7 +9,7 @@
 		<Publisher>Arq. Juan Garcia</Publisher>
 		<VendorDescription>Arq. Juan Garcia, https://www.linkedin.com/in/arqjuangarcia/</VendorDescription>
 	</AddIn>
-	<AddIn Type="Command">
+	<!--<AddIn Type="Command">
 		<Text>Tag Wall Layers</Text>
 		<Description>Tags every layer of a wall</Description>
 		<Assembly>cbb.core.dll</Assembly>
@@ -17,5 +17,5 @@
 		<ClientId>d0629e1d-f3b0-4449-8ca1-6cb3eccb7362</ClientId>
 		<VendorId>com.juanover.bimwave</VendorId>
 		<VendorDescription>Arq. Juan Garcia, https://www.linkedin.com/in/arqjuangarcia/</VendorDescription>
-	</AddIn>
+	</AddIn>-->
 </RevitAddIns>

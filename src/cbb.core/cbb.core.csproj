@@ -17,10 +17,6 @@
 			<Private>False</Private>
 		</Reference>
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Commands\AnnotatePanel\FamilyManager\" />
-	</ItemGroup>
 	
 	
 
