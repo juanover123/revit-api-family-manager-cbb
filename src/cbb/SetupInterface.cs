@@ -42,9 +42,9 @@
                 Panel = annotateCommandsPanel,
                 ToolTip = "This is some sample tooltip text, replace it with real one later,...",
                 CommandNamespacePath = TagWallLayersCommand.GetPath(),
-                IconImageName = "wallTag_icon_96x96.png",
+                IconImageName = "wallTag_icon_32x32.png",
                 TooltipImageName = "wallTag_tooltip_320x320.png",
-                SmallImageName = "wallTag_icon_32x32.png"
+                SmallImageName = "wallTag_icon_16x16.png"
             };
 
             // Create button from provided data.
@@ -56,26 +56,26 @@
 
             var familyManagerShowButtonData = new RevitPushButtonDataModel
             {
-                Label = "Show Family\nManager",
+                Label = "Show",
                 Panel = familyManagerCommandsPanel,
                 ToolTip = "This is some sample tooltip text, replace it with real one later,...",
                 CommandNamespacePath = FamilyManagerShowCommand.GetPath(),
-                IconImageName = "familyManagerShow_icon_96x96.png",
+                IconImageName = "familyManagerShow_icon_32x32.png",
                 TooltipImageName = "familyManagerShow_tooltip_320x320.png",
-                SmallImageName = "familyManagerShow_icon_32x32.png"
+                SmallImageName = "familyManagerShow_icon_16x16.png"
             };
 
             var familyManagerShowButton = RevitPushButton.Create(familyManagerShowButtonData);
 
             var familyManagerHideButtonData = new RevitPushButtonDataModel
             {
-                Label = "Hide Family\nManager",
+                Label = "Hide",
                 Panel = familyManagerCommandsPanel,
                 ToolTip = "This is some sample tooltip text, replace it with real one later,...",
                 CommandNamespacePath = FamilyManagerHideCommand.GetPath(),
-                IconImageName = "familyManagerHide_icon_96x96.png",
+                IconImageName = "familyManagerHide_icon_32x32.png",
                 TooltipImageName = "familyManagerHide_tooltip_320x320.png",
-                SmallImageName = "familyManagerHide_icon_32x32.png"
+                SmallImageName = "familyManagerHide_icon_16x16.png"
             };
 
             var familyManagerHideButton = RevitPushButton.Create(familyManagerHideButtonData);
