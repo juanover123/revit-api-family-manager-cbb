@@ -22,7 +22,9 @@
         /// <returns></returns>
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            TaskDialog.Show("Family Manager", "Show Family Manager dockable pane command executed.");
+            var dpid = new DockablePaneId(PaneIdentifiers.GetFamilyManagerPaneId());
+            var dp = commandData.Application.GetDockablePane(dpid);
+            dp.Show();
 
             return Result.Succeeded;
         }

@@ -1,4 +1,5 @@
 ﻿using Autodesk.Revit.UI;
+using Autodesk.Revit.ApplicationServices;
 
 namespace cbb
 
@@ -7,6 +8,9 @@ namespace cbb
     /// </summary>
     /// <seealso cref="Autodesk.Revit.UI.IExternalApplication"/>
 {
+    using ui;
+
+
     public class Main : IExternalApplication
     {
         #region external application public methods
@@ -23,6 +27,8 @@ namespace cbb
             var ui = new SetupInterface();
             ui.Initialize(application);
 
+            application.ControlledApplication.ApplicationInitialized += DockablePaneRegisters;
+
             return Result.Succeeded;
         }
 
@@ -36,6 +42,22 @@ namespace cbb
         {
             return Result.Succeeded;
         }
+        #endregion
+
+        #region private methods
+
+        /// <summary>
+        /// Registers dockable panes when application is initialized.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DockablePaneRegisters(object sender, Autodesk.Revit.DB.Events.ApplicationInitializedEventArgs e)
+        {
+            //Register Family Manager dockable pane.
+            var familyManagerRegisterCommand = new ui.FamilyManagerRegisterCommand();
+            familyManagerRegisterCommand.Execute(new UIApplication(sender as Application));
+        }
+
         #endregion
     }
 }
