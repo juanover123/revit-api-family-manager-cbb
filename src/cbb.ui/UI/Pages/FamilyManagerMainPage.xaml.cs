@@ -5,6 +5,9 @@
     using System.Windows.Controls;
 
     using Autodesk.Revit.UI;
+
+    using core;
+
     /// <summary>
     /// Interaction logic for FamilyManagerMainPage.xaml
     /// </summary>
@@ -19,6 +22,9 @@
         public FamilyManagerMainPage()
         {
             InitializeComponent();
+
+            // Set data context for main application page..
+            DataContext = new FamilyManagerMainPageViewModel();
         }
 
         #endregion

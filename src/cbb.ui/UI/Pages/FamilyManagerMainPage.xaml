@@ -8,12 +8,32 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="FamilyManagerMainPage">
 
-    <Grid Background="DimGray">
-        <TextBlock Text="Hello from dockable pane..."
-                   Foreground="AntiqueWhite"
-                   FontSize="18"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Buttons bar, page switching -->
+        <Grid Grid.Row="0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" 
+                    Content="Family"
+                    Command="{Binding FamilyBtnCommand}"/>
+
+
+            <Button Grid.Column="1" 
+                    Content="Preferences"
+                    Command="{Binding PreferencesBtnCommand}"/>
+
+        </Grid>
+
+        <Border Grid.Row="1" Background="PaleVioletRed"></Border>
 
     </Grid>
 </Page>

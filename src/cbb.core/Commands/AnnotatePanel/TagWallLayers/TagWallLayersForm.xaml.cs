@@ -6,6 +6,7 @@
     using System;
     using System.Windows;
     using System.Collections.Generic;
+    using cbb.core;
 
     /// <summary>
     /// Tag wall layers data aquisition form. Interaction logic for TagWallLayersForm.xaml

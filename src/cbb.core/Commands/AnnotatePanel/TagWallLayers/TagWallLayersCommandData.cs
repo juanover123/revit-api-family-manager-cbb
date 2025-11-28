@@ -1,6 +1,7 @@
 ﻿namespace cbb.core
 {
     using Autodesk.Revit.DB;
+    using cbb.core;
 
     /// <summary>
     /// Information and data model for command <see cref="TagWallLayersCommand"/>to execute.
