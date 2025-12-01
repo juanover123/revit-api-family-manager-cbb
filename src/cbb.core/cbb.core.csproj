@@ -7,6 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+  </ItemGroup>
+
 	<ItemGroup>
 		<Reference Include="RevitAPI">
 			<HintPath>..\..\ext\RevitAPI.dll</HintPath>
