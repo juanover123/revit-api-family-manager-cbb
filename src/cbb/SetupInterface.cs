@@ -10,6 +10,9 @@
     /// </summary>
     public class SetupInterface
     {
+        public static PushButton? FamilyManagerShowButton { get; private set; }
+        public static PushButton? FamilyManagerHideButton { get; private set; }
+
         #region
 
         /// <summary>
@@ -65,7 +68,9 @@
                 SmallImageName = "familyManagerShow_icon_16x16.png"
             };
 
-            var familyManagerShowButton = RevitPushButton.Create(familyManagerShowButtonData);
+            FamilyManagerShowButton = RevitPushButton.Create(familyManagerShowButtonData);
+
+            FamilyManagerShowButton.Enabled = false;
 
             var familyManagerHideButtonData = new RevitPushButtonDataModel
             {
@@ -78,7 +83,9 @@
                 SmallImageName = "familyManagerHide_icon_16x16.png"
             };
 
-            var familyManagerHideButton = RevitPushButton.Create(familyManagerHideButtonData);
+            FamilyManagerHideButton = RevitPushButton.Create(familyManagerHideButtonData);
+
+            FamilyManagerHideButton.Enabled = false;
 
             #endregion
         }

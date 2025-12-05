@@ -54,8 +54,22 @@ namespace cbb
         private void DockablePaneRegisters(object sender, Autodesk.Revit.DB.Events.ApplicationInitializedEventArgs e)
         {
             //Register Family Manager dockable pane.
+
             var familyManagerRegisterCommand = new ui.FamilyManagerRegisterCommand();
-            familyManagerRegisterCommand.Execute(new UIApplication(sender as Application));
+
+            Result result = familyManagerRegisterCommand.Execute(new UIApplication(sender as Application));
+
+            if (result == Result.Succeeded)
+            {
+                if (SetupInterface.FamilyManagerShowButton != null)
+                {
+                    SetupInterface.FamilyManagerShowButton.Enabled = true;
+                }
+                if (SetupInterface.FamilyManagerHideButton != null)
+                {
+                    SetupInterface.FamilyManagerHideButton.Enabled = true;
+                }
+            }
         }
 
         #endregion

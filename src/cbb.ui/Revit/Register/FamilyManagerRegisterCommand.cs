@@ -37,26 +37,25 @@
         /// <returns></returns>
         public Result Execute(UIApplication uIApplication)
         {
-            var data = new DockablePaneProviderData();
-            var managerPage = new FamilyManagerMainPage();
-
-            
-            data.FrameworkElement = managerPage as FrameworkElement;
-
-            // Setup initial state.
-            var state = new DockablePaneState
+            try 
             {
-                DockPosition = DockPosition.Right,
-                TabBehind = DockablePanes.BuiltInDockablePanes.ProjectBrowser,
-            };
+                var managerPage = new FamilyManagerMainPage();
 
-            // Use unique GUID identifier for this dockable pane.
-            var dpid = new DockablePaneId(PaneIdentifiers.GetFamilyManagerPaneId());
+                // Register the dockable pane.
+                uIApplication.RegisterDockablePane(
+                    PaneIdentifiers.FamilyManagerPaneId, // GUID
+                    "Family Manager",                   // Tab title
+                    managerPage as IDockablePaneProvider // Content
+                );
+                return Result.Succeeded;
+            }
+            catch (System.Exception ex)
+            {
+                core.Message.Display("ERROR al registrar el panel acoplable: " + ex.Message, core.WindowType.Error);
 
-            // Register the dockable pane.
-            uIApplication.RegisterDockablePane(dpid, "Family Manager", managerPage as IDockablePaneProvider);
+                return Result.Failed;
+            }
 
-            return Result.Succeeded;
         }
 
 

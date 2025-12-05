@@ -22,8 +22,13 @@
         /// <returns></returns>
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            var dpid = new DockablePaneId(PaneIdentifiers.GetFamilyManagerPaneId());
-            var dp = commandData.Application.GetDockablePane(dpid);
+            var dp = commandData.Application.GetDockablePane(PaneIdentifiers.FamilyManagerPaneId);
+
+            if (dp == null)
+            {
+                return Result.Cancelled;
+            }
+
             dp.Hide();
 
             return Result.Succeeded;
